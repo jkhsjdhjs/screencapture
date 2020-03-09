@@ -32,7 +32,7 @@ if [[ "$1" != "active" ]]; then
     fi
 else
     if ! maim -i "$(xdotool getactivewindow)" > "$file"; then
-        notify-send -a "$title" "maim encountered an error!" "$(tr < "$file" -d '\000')"
+        notify-send -a "$title" "maim/xdotool encountered an error!" "$(tr < "$file" -d '\000')"
         rm -f "$file"
         exit 1
     fi
@@ -45,8 +45,6 @@ if ! link="$("./screens-uploader.bash" "$file")"; then
 fi
 
 rm -f "$file"
-
-echo "$link"
 
 echo -n "$link" | xsel -ib
 notify-send -a "$title" "Upload successful!" "The link has been copied to clipboard."

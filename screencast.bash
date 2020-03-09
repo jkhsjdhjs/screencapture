@@ -60,6 +60,6 @@ if [[ ! -r "$pid_file" ]]; then
     notify-send -a "$title" "Upload successful!" "The link has been copied to clipboard."
 else
     if ! kill -15 "$(< "$pid_file")"; then
-        notify-send -a "$title" "Another screencast is already running!"
+        notify-send -a "$title" "Failed to end running recording!" "Try removing the pid file: $pid_file"
     fi
 fi
