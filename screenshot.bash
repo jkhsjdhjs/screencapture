@@ -21,14 +21,14 @@ file="$(mktemp)"
 
 if [[ "$1" != "active" ]]; then
     if ! flameshot "$@" -r > "$file"; then
-        notify-send -a "$title" "flameshot encountered an error!" "$(tr < "$file" -d '\000')"
+        output="$(< "$file")"
+        if [[ "$output" == "screenshot aborted" ]]; then
+            rm -f "$file"
+            exit
+        fi
+        notify-send -a "$title" "flameshot encountered an error!" "$output"
         rm -f "$file"
         exit 1
-    fi
-
-    if [[ "$(tr < "$file" -d '\000')" == "screenshot aborted" ]]; then
-        rm -f "$file"
-        exit
     fi
 else
     if ! maim -i "$(xdotool getactivewindow)" > "$file"; then
