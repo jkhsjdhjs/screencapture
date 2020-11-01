@@ -3,7 +3,7 @@
 # This script creates a temporary file where ffmpeg will
 # start recording to. If the script is invoked again it
 # will stop the running recording, the previously ran
-# script will then upload the script using
+# script will then upload the video using
 # "screens-uploader.bash" and copy the link to the clipboard.
 # The user will get notified of any errors via notify-send.
 #
