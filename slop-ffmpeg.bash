@@ -25,7 +25,7 @@ ffmpeg_out="$2"
 shift 2
 
 # check if another instance is already running
-[[ -a "$pid_file" ]] && exit 1
+[[ -e "$pid_file" ]] && exit 1
 
 # check if file exists and is writeable
 [[ ! -w "$ffmpeg_out" ]] && exit 2
@@ -67,7 +67,7 @@ slop_exit_code="$?"
 read -r X Y W H < <(echo "$slop")
 
 # check again if another instance is already running
-[[ -a "$pid_file" ]] && exit 1
+[[ -e "$pid_file" ]] && exit 1
 
 # record mp4
 ffmpeg -y -probesize 32 \
