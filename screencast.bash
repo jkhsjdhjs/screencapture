@@ -9,7 +9,7 @@
 #
 # Usage: ./screencast.bash [<audio devices>]
 # audio devices: pulseaudio device name (e.g. alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo)
-#                or "@DEFAULT_SINK@", which selects the monitor device for the default sink
+#                or "@DEFAULT_MONITOR@", which selects the monitor device for the default sink
 #                or "@DEFAULT_SOURCE@", which selects the default source
 # returns: 0 on success
 #          1-4,6-7 as in slop-ffmpeg.bash

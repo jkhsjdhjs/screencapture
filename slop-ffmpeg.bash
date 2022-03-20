@@ -9,7 +9,7 @@
 # pid file:      the file where the ffmpeg process pid will be written to
 # output file:   file where ffmpeg should write the recorded video to
 # audio devices: pulseaudio device name (e.g. alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo)
-#                or "@DEFAULT_SINK@", which selects the monitor device for the default sink
+#                or "@DEFAULT_MONITOR@", which selects the monitor device for the default sink
 #                or "@DEFAULT_SOURCE@", which selects the default source
 # returns: 0 on success
 #          1 if another instance of this script is already running (pid file exists)
@@ -34,7 +34,7 @@ shift 2
 audio_devices=()
 for arg in "$@"; do
     case "$arg" in
-        "@DEFAULT_SINK@")
+        "@DEFAULT_MONITOR@")
             device="$(pactl get-default-sink).monitor" || exit 3
             ;;
         "@DEFAULT_SOURCE@")
